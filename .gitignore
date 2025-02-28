@@ -15,4 +15,3 @@ wheels/
 # Files and folder contents
 *.txt
 VectorDB/vectorstore/**
-scraped_files/**
