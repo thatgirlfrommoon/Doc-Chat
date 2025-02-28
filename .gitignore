@@ -14,4 +14,4 @@ wheels/
 
 # Files and folder contents
 *.txt
-VectorDB/vectorstore/**
+VectorDB/vectorstore/
