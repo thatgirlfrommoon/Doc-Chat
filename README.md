@@ -5,10 +5,8 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-yellow.svg)](https://opensource.org/license/apache-2-0)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1yrS2Kp-kprYWot_sEu7JeWMIRAei_vov?usp=sharing)
-[![Chroma DB](https://dbdb.io/media/logos/chroma_H600YUl.svg)](https://trychroma.com/)
 [![LangChain](https://img.shields.io/badge/LangChain-Open%20SourceFramework-5e9cff?logo=langchain&logoColor=white)](https://python.langchain.com/docs/introduction/)
-[![Streamlit](https://img.shields.io/badge/Streamlit%20-Multi--Agent%20Workflows-00bda?style=flat-square)](https://www.crewai.com/) 
-[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_red.svg)](https://streamlit.io/)
+[![Streamlit UI](https://static.streamlit.io/badges/streamlit_badge_black_red.svg)](https://streamlit.io/)
 
 
 Doc-chat is repository for you to chat and learn an information in a wesite or link of your choice and extract insights from it.
