@@ -1,9 +1,9 @@
 import streamlit as st
-import DocChat_backend
+import doc_chat_backend
 
 # create a Gradio interface
 def create_streamlit_interface():
-
+    """Create a streamlit interface for the chatbot."""
     st.title("RAG based Conversational AI bot")
 
     # Display the chat message
@@ -27,7 +27,7 @@ def create_streamlit_interface():
 
             message_placeholder = st.empty()
             # full_response = ""
-            full_response = DocChat_backend.chat_with_bot(
+            full_response = doc_chat_backend.chat_with_bot(
                 user_input=prompt, conversation_history=st.session_state.messages
             )
 
@@ -41,4 +41,5 @@ def create_streamlit_interface():
 
 
 if __name__ == "__main__":
+    """Run the streamlit interface."""
     create_streamlit_interface()
