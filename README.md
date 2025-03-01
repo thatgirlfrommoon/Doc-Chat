@@ -22,10 +22,10 @@ If it is available to crawl, you have it! The Doc-chat is ready to consume any k
 
 # Setup
 
-For Windows 
+For Windows
 Install uv for python package management from https://docs.astral.sh/uv/getting-started/installation/
 - $ curl -LsSf https://astral.sh/uv/install.sh | less
-or 
+or
 - $ pip install uv
 
 
@@ -52,9 +52,9 @@ uv.lock is a human-readable TOML file but is managed by uv and should not be edi
 Add the key in ".env-sample" file in the path "./bot" abd rename the file name to ".env".
 
 # Run the Crawler
-- $ cd .\DocCrawl\  
+- $ cd .\DocCrawl\
 
-Now start crawling (You may edit the urls to crawl, if needed) 
+Now start crawling (You may edit the urls to crawl, if needed)
 - $ scrapy crawl document_spider
 
 With this, the crawled document would be available in the main directory "./scraped_files" path as text files.
@@ -71,6 +71,6 @@ With this step based on the length of the document, chromadb collections are cre
 - $ streamlit run app.py
 
 
-A link will open up in the browser with url : http://localhost:8501/ 
+A link will open up in the browser with url : http://localhost:8501/
 
 There you go!

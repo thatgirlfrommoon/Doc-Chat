@@ -14,5 +14,7 @@ dependencies = [
     "chromadb",
     "gradio",
     "streamlit",
-    "langchain-text-splitters"
+    "langchain-text-splitters",
+    "pre-commit",
+    "pylint>=3.3.4",
 ]
