@@ -25,6 +25,8 @@ def get_embedding(text):
 def get_collection():
     """Initialise the chroma db client."""
     # initialise chromadb 
+    if not os.path.exists('./vectorstore'):
+        os.makedirs('./vectorstore')
     client = chromadb.PersistentClient(path='./vectorstore')
     collection = client.get_or_create_collection("crawled_docs_1")
     return collection
