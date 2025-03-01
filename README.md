@@ -9,6 +9,7 @@
 [![Streamlit UI](https://static.streamlit.io/badges/streamlit_badge_black_red.svg)](https://streamlit.io/)
 
 
+
 Doc-chat is repository for you to chat and learn an information in a website or link of your choice and extract insights from it.
 
 The contents could be
@@ -68,6 +69,7 @@ With this step based on the length of the document, chromadb collections are cre
 # Power up the bot
 - $ cd ..
 - $ streamlit run app.py
+
 
 A link will open up in the browser with url : http://localhost:8501/ 
 
