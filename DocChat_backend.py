@@ -8,37 +8,38 @@ client = openai.OpenAI()
 
 # Function to get embedidngs from openai
 def get_embedding(text):
-    """ Create text embeddings."""
+    """Create text embeddings."""
     print("creating embedding...")
     response = client.embeddings.create(
         input=text,
-    model=os.getenv("OPENAI_EMBEDDING_MODEL"),
-
+        model=os.getenv("OPENAI_EMBEDDING_MODEL"),
     )
     if not response.data[0].embedding:
         print("Failed to create embedding")
     print("Created embedding!")
     return response.data[0].embedding
-    
+
 
 def get_collection():
     """Initialise the chroma db client."""
     # initialise chromadb
-    client = chromadb.PersistentClient(path='./VectorDB/vectorstore')
+    client = chromadb.PersistentClient(path="./VectorDB/vectorstore")
     collection = client.get_or_create_collection("crawled_docs_1")
     return collection
+
 
 def generate_response_from_vectordb(user_query):
     """Create embeddings for user query and find response from vector store."""
 
     collection = get_collection()
     query_embedding = get_embedding(user_query)
-    collection_results =  collection.query(
-        query_embeddings = [query_embedding],
-        n_results = 2
+    collection_results = collection.query(
+        query_embeddings=[query_embedding], n_results=2
     )
-    print("collection_results  : ",collection_results["documents"][0]) 
-    return (collection_results["documents"][0]) if collection_results["documents"] else ""
+    print("collection_results  : ", collection_results["documents"][0])
+    return (
+        (collection_results["documents"][0]) if collection_results["documents"] else ""
+    )
 
 
 def chat_with_bot(user_input, conversation_history):
@@ -47,11 +48,10 @@ def chat_with_bot(user_input, conversation_history):
     retrieved_docs = generate_response_from_vectordb(user_input)
     # print("retrieved_docs   : ", retrieved_docs)
     context = "---- context ----\n".join(retrieved_docs)
-    
 
-    prompt = f""" 
+    prompt = f"""
     You are a helpful assistant.
-    Please answer the question from the user based on the context given below. 
+    Please answer the question from the user based on the context given below.
     Use only the information provided in the context.
     If you don't know the answer, you can say "I don't know".
     -----------------------------------------------------------------------------------------------------
