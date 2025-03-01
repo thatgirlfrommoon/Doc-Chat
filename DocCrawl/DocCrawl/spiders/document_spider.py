@@ -10,8 +10,8 @@ class DoccrawlerSpider(scrapy.Spider):
     start_urls = [
                 #   "https://huggingface.co/docs/transformers/en/index", 
                 #   "https://huggingface.co/blog/LLMhacker/deepseek-r-is-best",
-                #   "https://huggingface.co/docs/diffusers/en/index",
-                    "https://huggingface.co/docs/diffusers/en/quicktour",
+                  "https://huggingface.co/docs/diffusers/en/index",
+                    # "https://huggingface.co/docs/diffusers/en/quicktour",
                 ]
 
     def __init__(self, *args, **kwargs):

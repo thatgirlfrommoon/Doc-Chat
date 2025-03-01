@@ -50,27 +50,24 @@ uv.lock is a human-readable TOML file but is managed by uv and should not be edi
 # Set up OPENAI key
 Add the key in ".env-sample" file in the path "./bot" abd rename the file name to ".env".
 
-# Create a Crawler
-- $ scrapy startproject DocCrawl 
-- $ cd DocCrawl 
-- $ scrapy genspider document_spider document_spider.co
+# Run the Crawler
+- $ cd .\DocCrawl\  
 
-Now edit the spider as per use and start crawling
+Now start crawling (You may edit the urls to crawl, if needed) 
 - $ scrapy crawl document_spider
 
-With this, the crawled document would be available in "./scraped_files" path as text files.
+With this, the crawled document would be available in the main directory "./scraped_files" path as text files.
 For the time being, We consider only one scraped file for next step.
 
 # Create a vector DB Storage
-- $ cd .\VectorDB\
-- $ uv run .\create_vector_store.py
+- $ uv run .\..\VectorDB\create_vector_store.py
 
 With this step based on the length of the document, chromadb collections are created in "./vectorstore" path.
 
 
 # Power up the bot
 - $ cd ..
-- $ uv run streamlit run app.py
+- $ streamlit run app.py
 
 A link will open up in the browser with url : http://localhost:8501/ 
 
