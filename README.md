@@ -9,7 +9,7 @@
 [![Streamlit UI](https://static.streamlit.io/badges/streamlit_badge_black_red.svg)](https://streamlit.io/)
 
 
-Doc-chat is repository for you to chat and learn an information in a wesite or link of your choice and extract insights from it.
+Doc-chat is repository for you to chat and learn an information in a website or link of your choice and extract insights from it.
 
 The contents could be
 - ⚡ A web documentation that youa are curious about.
