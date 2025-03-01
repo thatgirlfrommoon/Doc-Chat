@@ -14,5 +14,6 @@ dependencies = [
     "chromadb",
     "gradio",
     "streamlit",
-    "langchain-text-splitters"
+    "langchain-text-splitters",
+    "pre-commit",
 ]
