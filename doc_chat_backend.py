@@ -1,7 +1,7 @@
+import os
 import chromadb
 import openai
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 client = openai.OpenAI()
@@ -79,4 +79,5 @@ def chat_with_bot(user_input, conversation_history):
 
 
 if __name__ == "__main__":
+    """Run the chatbot."""
     chat_with_bot()
