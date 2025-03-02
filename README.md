@@ -21,9 +21,7 @@ If it is available to crawl, you have it! The Doc-chat is ready to consume any k
 
 # Brain of Doc-Chat
 
-<img width="539" alt="image" src="https://github.com/user-attachments/assets/9c284c49-86e7-4b89-bcd6-764652da1248" />
-
-
+![alt text](./images/workflow.png)
 
 
 # Setup
@@ -52,7 +50,6 @@ In powershell
 uv.lock is a human-readable TOML file but is managed by uv and should not be edited manually.
 - $ uv run .\hello.py
 
-![alt text](./images/image.png)
 
 # Set up OPENAI key
 Add the key in ".env-sample" file in the path "./bot" abd rename the file name to ".env".
