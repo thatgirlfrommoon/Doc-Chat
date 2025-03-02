@@ -19,6 +19,12 @@ The contents could be
 
 If it is available to crawl, you have it! The Doc-chat is ready to consume any knowledge that you present and would act as your study buddy!
 
+# Brain of Doc-Chat
+
+<img width="539" alt="image" src="https://github.com/user-attachments/assets/9c284c49-86e7-4b89-bcd6-764652da1248" />
+
+
+
 
 # Setup
 
