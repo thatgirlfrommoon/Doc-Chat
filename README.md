@@ -17,7 +17,7 @@ Possible Use Cases:
 - 📫 An online pdf book 
 - ⚡ A recently released publication
 
-If the content is available for crawling, Doc-Chat can process it and act as your personal study companion!
+If it's accessible to crawl, it's yours! The Doc-chat is ready to absorb any knowledge you provide and will serve as your trusty study companion!
 
 
 # Setup
