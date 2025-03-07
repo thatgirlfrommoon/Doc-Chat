@@ -10,14 +10,14 @@
 
 
 
-Doc-chat is a repository for you to chat and learn about information in a website or link of your choice and extract insights from it.
+Doc-Chat is a repository for you to chat and extract insights from any website or document of your choice.
 
-The contents could be
+Possible Use Cases:
 - ⚡ A web documentation that you are curious about.
 - 📫 A pdf book online.
-- ⚡ A recently released publication.
+- ⚡ A recently released publication
 
-If it is available to crawl, you have it! The Doc-chat is ready to consume any knowledge that you present and would act as your study buddy!
+If it's accessible to crawl, it's yours! The Doc-chat is ready to absorb any knowledge you provide and will serve as your trusty study companion!
 
 # Brain of Doc-Chat
 
@@ -26,8 +26,9 @@ If it is available to crawl, you have it! The Doc-chat is ready to consume any k
 
 # Setup
 
-For Windows 
+For Windows: 
 Install uv for python package management from https://docs.astral.sh/uv/getting-started/installation/
+
 - $ ```curl -LsSf https://astral.sh/uv/install.sh | less```
 or 
 - $ ```pip install uv```
@@ -68,7 +69,7 @@ For the time being, we consider only one scraped file for next step.
 # Create a vector DB Storage
 - $ ```uv run .\..\VectorDB\create_vector_store.py```
 
-With this step based on the length of the document, chromadb collections are created in "./vectorstore" path.
+With this step, based on the length of the document, chromadb collections are created in "./vectorstore" path.
 
 
 # Power up the bot
