@@ -23,8 +23,14 @@ If it is available to crawl, you have it! The Doc-chat is ready to consume any k
 
 ![alt text](./images/workflow.png)
 
+# How to use Doc-Chat
+- Clone the repository :
+    - $ git clone https://github.com/thatgirlfrommoon/Doc-Chat.git
+- Run app.py
+    - $ streamlit run app.py
 
-# Setup
+
+# Development Setup
 
 For Windows 
 Install uv for python package management from https://docs.astral.sh/uv/getting-started/installation/
