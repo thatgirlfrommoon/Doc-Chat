@@ -1,10 +1,13 @@
 import streamlit as st
 import DocChat_backend
 
+st.set_page_config(page_title="Doc-Chat", page_icon="🤖", layout="wide") 
+
 # create a Gradio interface
 def create_streamlit_interface():
 
     st.title("RAG based Conversational AI bot")
+      
 
     # Display the chat message
     if 'messages' not in st.session_state:
@@ -13,9 +16,14 @@ def create_streamlit_interface():
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
-    st.sidebar.title("Model parameters")
+
+    st.sidebar.header("Model parameter")
+    st.sidebar.write("Customize the chatbot’s behavior by adjusting the settings below.")
+    temp = st.sidebar.slider("Temperature", 0.0, 1.0, 0.1, key="temperature")
+    max_tokens = st.sidebar.slider("Max tokens", 50, 500, 150, key="max_tokens")
 
     if prompt := st.text_input("Hi👋, What's up🧑‍💻?"):
+        
         st.session_state.messages.append({"role": "user",
                                            "content": prompt})
         # display the user message
@@ -28,8 +36,8 @@ def create_streamlit_interface():
             
             message_placeholder = st.empty()
             # full_response = ""
-            full_response = DocChat_backend.chat_with_bot(user_input=prompt,
-                                                                       conversation_history= st.session_state.messages)
+            full_response = DocChat_backend.chat_with_bot(user_input=prompt, 
+                                                          args={"temperature": temp, "max_tokens": max_tokens},conversation_history= st.session_state.messages)
             
             # # Add blinking cursor to simulate typing
             message_placeholder.markdown(full_response)

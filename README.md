@@ -19,6 +19,10 @@ The contents could be
 
 If it is available to crawl, you have it! The Doc-chat is ready to consume any knowledge that you present and would act as your study buddy!
 
+# Brain of Doc-Chat
+
+![alt text](./images/workflow.png)
+
 
 # Setup
 
@@ -46,7 +50,6 @@ In powershell
 uv.lock is a human-readable TOML file but is managed by uv and should not be edited manually.
 - $ uv run .\hello.py
 
-![alt text](./images/image.png)
 
 # Set up OPENAI key
 Add the key in ".env-sample" file in the path "./bot" abd rename the file name to ".env".
