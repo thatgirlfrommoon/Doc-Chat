@@ -41,7 +41,7 @@ def generate_response_from_vectordb(user_query):
     return (collection_results["documents"][0]) if collection_results["documents"] else ""
 
 
-def chat_with_bot(user_input, conversation_history):
+def chat_with_bot(user_input, args, conversation_history):
     """Create prompts to converse with llm."""
 
     retrieved_docs = generate_response_from_vectordb(user_input)
@@ -63,20 +63,16 @@ def chat_with_bot(user_input, conversation_history):
     ------------------------------------------------------------------------------------------------------
     # Answer
 
-    """
-    print(prompt)
+    """ 
+    # print(prompt)
     # Send the prompt to OpenAI's chat-based model (e.g., gpt-3.5-turbo, gpt-4)
     response = client.chat.completions.create(
         model=os.getenv("OPENAI_MODEL"),  # Or use "gpt-4" for GPT-4 model
         messages=conversation_history + [{"role": "user", "content": prompt}],
-        temperature=0.1,  # Control randomness of the response (higher = more random)
-        max_tokens=150,  # Limit on tokens per response
+        temperature=args["temperature"],  # Control randomness of the response (higher = more random)
+        max_tokens=args["max_tokens"],  # Limit on tokens per response
     )
 
     # Extract the assistant's reply
     bot_message = response.choices[0].message.content
     return bot_message
-
-
-if __name__ == "__main__":
-    chat_with_bot()
