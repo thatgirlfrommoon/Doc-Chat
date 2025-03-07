@@ -18,9 +18,9 @@ def create_streamlit_interface():
             st.markdown(message["content"])
 
     st.sidebar.header("Model parameter")
-    st.sidebar.write("Customize the chatbot’s behavior by adjusting the settings below.")
-    temp = st.sidebar.slider("Temperature", 0.0, 1.0, 0.1, key="temperature")
-    max_tokens = st.sidebar.slider("Max tokens", 50, 500, 150, key="max_tokens")
+    st.sidebar.write("Customize the Doc-Chat's behavior by adjusting the settings below.")
+    temp = st.sidebar.slider("Response Creativity", 0.0, 1.0, 0.1, key="temperature")
+    max_tokens = st.sidebar.slider("Response Length", 50, 500, 150, key="max_tokens")
 
     if prompt := st.text_input("Hi👋, What's up🧑‍💻?"):
         
