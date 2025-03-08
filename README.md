@@ -73,13 +73,13 @@ With this, the crawled document would be available in the main directory "./scra
 For the time being, we consider only one scraped file for next step.
 
 # Create a vector DB Storage
-- ```uv run .\..\VectorDB\create_vector_store.py```
+- ```cd ..```
+- ```uv run .\VectorDB\create_vector_store.py```
 
 With this step, based on the length of the document, chromadb collections are created in "./vectorstore" path.
 
 
 # Power up the bot
-- ```cd ..```
 - ```streamlit run app.py```
 
 

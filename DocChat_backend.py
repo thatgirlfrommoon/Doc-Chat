@@ -24,8 +24,8 @@ def get_embedding(text):
 def get_collection():
     """Initialise the chroma db client."""
     # initialise chromadb
-    client = chromadb.PersistentClient(path='./VectorDB/vectorstore')
-    collection = client.get_or_create_collection("crawled_docs_1")
+    db_client = chromadb.PersistentClient(path='./VectorDB/vectorstore')
+    collection = db_client.get_or_create_collection("crawled_docs_1")
     return collection
 
 def generate_response_from_vectordb(user_query):
@@ -37,7 +37,7 @@ def generate_response_from_vectordb(user_query):
         query_embeddings = [query_embedding],
         n_results = 2
     )
-    print("collection_results  : ",collection_results["documents"][0]) 
+    print("collection_results  : ",collection_results) 
     return (collection_results["documents"][0]) if collection_results["documents"] else ""
 
 
