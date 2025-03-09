@@ -20,54 +20,55 @@ def get_embedding(text):
         print("Failed to create embedding")
     print("Created embedding!")
     return response.data[0].embedding
-    
 
 def get_collection():
     """Initialise the chroma db client."""
-    # initialise chromadb 
-    if not os.path.exists('./vectorstore'):
-        os.makedirs('./vectorstore')
-    client = chromadb.PersistentClient(path='./vectorstore')
-    collection = client.get_or_create_collection("crawled_docs_1")
-    return collection
+    store_path = './VectorDB/vectorstore'
+    if not os.path.exists(store_path):
+        os.makedirs('')
+    client = chromadb.PersistentClient(path=store_path)
+    return client.get_or_create_collection("crawled_docs_1")
 
-def store_embedding(embedding, chunk, id):
+
+def store_embedding(embedding, chunk, chunk_id, collection):
     """Store the embeddings"""
-    collection = get_collection()
-    collection.add(
+    collection.upsert(
         embeddings=[embedding],
         documents=[chunk],
-        metadatas=[{"source": f"chunk_{id}"}],
-        ids=[f"doc_{id}"]
+        metadatas=[{"source": chunk_id}],
+        ids=[chunk_id]
     )
-    print(f"stored chunk : {id}" )
+    print(f"stored chunk : {chunk_id}" )
 
 # Create embeddings
 def create_and_store_embeddings():
     """ Create and store text embeddings."""
 
-
-    #load text file 
-    dir_path = "./../scraped_files/"
+    # load text file 
+    dir_path = "./scraped_files/"
     txt_files = [f for f in os.listdir(dir_path) if f.endswith('.txt')]
-    if len(txt_files) != 1:
-        raise ValueError('Should be only one txt file in the current directory')
-    filename = txt_files[0]
-    with open(dir_path+filename, encoding="utf-8") as file:
-        doc_text = file.read()
-    
-    # split text into chunks
-    chunk_size = 500
+
+    chunk_size = 5000
     text_splitter = TokenTextSplitter(chunk_size=chunk_size,
                                       chunk_overlap=100,)
-    chunks = text_splitter.split_text(doc_text)
+    collection = get_collection()
 
-    # create embeddings for each chunk
-    for id, chunk in enumerate(chunks):
-        # vectorize each chunk and store
-        print(len(chunk))
-        embedding = get_embedding(chunk)
-        store_embedding(embedding,chunk, id)
+    if not txt_files:
+        raise ValueError('No txt files found in the current directory')
+    
+    for file_name in txt_files:
+        print(f"Processing file: {file_name}")
+        file_path = dir_path+file_name
+        with open(file_path, encoding="utf-8") as file:
+            doc_text = file.read()
+
+        # split the text into chunks
+        chunks = text_splitter.split_text(doc_text)
+        # create embeddings for each chunk
+        for num,chunk in enumerate(chunks):
+            embedding = get_embedding(chunk)
+            store_embedding(embedding,chunk, f"{num}_{hash(file_name)}",
+                            collection)
 
 if __name__ == "__main__":
     create_and_store_embeddings()
