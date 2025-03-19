@@ -28,26 +28,27 @@ If it's accessible to crawl, it's yours! The Doc-chat is ready to absorb any kno
 
 1. **Clone the repository**
 
-- ``` bash
-    https://github.com/thatgirlfrommoon/Doc-Chat.git 
-    ```
+    - ``` bash
+        https://github.com/thatgirlfrommoon/Doc-Chat.git 
+        ```
 
-Or start a codespace from the repository.
-- ```bash
-    https://codespaces.new/thatgirlfrommoon/Doc-Chat```
-
-
-
+    Or start a codespace from the repository.
+    - ```bash
+      https://codespaces.new/thatgirlfrommoon/Doc-Chat
+      ```
 2. **Install uv**
 
     MacOS/Linux:
 
-    - ```curl -LsSf https://astral.sh/uv/install.sh | s```
+    - ```bash
+      curl -LsSf https://astral.sh/uv/install.sh | s
+      ```
 
         
     Windows:
 
-    - ```powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"```
+    - ```bash 
+      powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"```
       
 Make sure to restart your terminal afterwards to ensure that the uv command gets picked up.
     
@@ -62,13 +63,13 @@ Add the key in ".env-sample" file in the path "./bot" and rename the file name t
 5. **Run the Crawler**
 
 - ```bash 
-    cd .\DocCrawl\ 
+  cd .\DocCrawl\ 
     ```
 
 Now start crawling (You may edit the urls to crawl, if needed) 
 
 - ```bash
-    scrapy crawl document_spider
+  scrapy crawl document_spider
     ```
 
 With this, the crawled document would be available in the main directory "./scraped_files" as text files.
@@ -77,10 +78,10 @@ For the time being, we consider only one scraped file for next step.
 6. **Create a vector DB Storage**
 
 - ```bash
-    cd ..
+  cd ..
     ```
 - ```bash
-    uv run .\..\VectorDB\create_vector_store.py
+  uv run .\..\VectorDB\create_vector_store.py
     ```
 
 With this step based on the length of the document, chromadb collections are created in ```./vectorstore``` path.
@@ -88,10 +89,10 @@ With this step based on the length of the document, chromadb collections are cre
 
 7. **Power up the bot**
 - ```bash 
-    cd ..
+  cd ..
   ```
 - ```bash
-    streamlit run app.py
+  streamlit run app.py
   ```
 
 
