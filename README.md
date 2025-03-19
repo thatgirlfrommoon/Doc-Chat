@@ -56,28 +56,37 @@ Make sure to restart your terminal afterwards to ensure that the uv command gets
     uv sync
     ```
 
-# Set up OPENAI key
+4. **Set up OPENAI key**
 Add the key in ".env-sample" file in the path "./bot" and rename the file name to ".env".
 
-# Run the Crawler
+5. **Run the Crawler**
 
-- ```cd .\DocCrawl\ ```
+- ```bash 
+    cd .\DocCrawl\ 
+    ```
 
 Now start crawling (You may edit the urls to crawl, if needed) 
-- ```scrapy crawl document_spider```
+
+- ```bash
+    scrapy crawl document_spider
+    ```
 
 With this, the crawled document would be available in the main directory "./scraped_files" as text files.
 For the time being, we consider only one scraped file for next step.
 
-# Create a vector DB Storage
+6. **Create a vector DB Storage**
 
-- ```cd ..```
-- ```uv run .\..\VectorDB\create_vector_store.py```
+- ```bash
+    cd ..
+    ```
+- ```bash
+    uv run .\..\VectorDB\create_vector_store.py
+    ```
 
 With this step based on the length of the document, chromadb collections are created in ```./vectorstore``` path.
 
 
-# Power up the bot
+7. **Power up the bot**
 - ```bash 
     cd ..
   ```
