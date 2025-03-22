@@ -18,7 +18,9 @@ def create_streamlit_interface():
         if st.button("Strart Crawling"):
             with st.spinner("Wait for it...", show_time=True):
                 crawl_status = pipeline(url=user_url)
-                if crawl_status==2:
+                if isinstance(crawl_status, dict):
+                    st.error(f'{crawl_status["error_message"]}')
+                elif crawl_status==2:
                     st.success("Read the website!")
                 else:
                     st.success("Already added!")
