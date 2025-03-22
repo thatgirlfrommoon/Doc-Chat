@@ -1,11 +1,10 @@
-
 from scrape_pipeline.scraper import WebCrawler
 
 
 
 def pipeline(url):
-    # validate the URL
-
+    """Pipeline to crawl website and update status"""
+  
     # Create an instance of WebCrawler
     crawler = WebCrawler(url)
 

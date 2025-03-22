@@ -1,7 +1,6 @@
 import streamlit as st
 import DocChat_backend
 from crawling_pipeline import pipeline
-import time
 
 st.set_page_config(page_title="Doc-Chat", page_icon="🤖", layout="wide") 
 
@@ -24,13 +23,6 @@ def create_streamlit_interface():
                     st.success("Read the website!")
                 else:
                     st.success("Already added!")
-    
-            
-    # if crawl_status:
-    #     print("Hi")
-    #     st.markdown("Sucess!")
-    # else:
-    #     st.markdown("Failed to add the url to database")
 
 
     # Display the chat message
