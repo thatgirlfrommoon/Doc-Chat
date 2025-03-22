@@ -4,6 +4,7 @@ import csv
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 from datetime import datetime as d
+from scrape_pipeline.url_validator import validate_url
 
 class WebCrawler:
     def __init__(self, url):
@@ -74,6 +75,12 @@ class WebCrawler:
 
     def crawl_and_save(self):
         """Crawl the URL, extract text, and save it to a file."""
+
+        # validate URL
+        validity = validate_url(self.url)
+        print(validity)
+        if not validity["valid"]:
+            return validity
         if self.url_in_registry():
             print(f"URL '{self.url}' is already crawled. Skipping...")
             return 1
