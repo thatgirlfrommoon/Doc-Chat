@@ -1,18 +1,16 @@
 [project]
-name = "Doc-Chat"
+name = "doc-chat"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "tiktoken",
-    "html2text",
-    "openai>=1.64.0",
-    "scrapy",
-    "langchain",
-    "langchain-community",
-    "chromadb",
-    "gradio",
-    "streamlit",
-    "langchain-text-splitters"
+    "beautifulsoup4>=4.13.3",
+    "chromadb>=0.6.3",
+    "langchain>=0.3.21",
+    "langchain-community>=0.3.20",
+    "openai>=1.68.2",
+    "requests>=2.32.3",
+    "streamlit>=1.43.2",
+    "urllib3>=2.3.0",
 ]
