@@ -58,41 +58,34 @@ Make sure to restart your terminal afterwards to ensure that the uv command gets
     ```
 
 4. **Set up OPENAI key**
-Add the key in ".env-sample" file in the path "./bot" and rename the file name to ".env".
+Add the key in ".env-sample" files in two paths paths 
+   - main folder
+   - ".\VectorDB\env-sample"
 
-5. **Run the Crawler**
+    and rename both files to ".env".
 
-- ```bash 
-  cd .\DocCrawl\ 
-    ```
+5. **Now start crawling.**
 
-Now start crawling (You may edit the urls to crawl, if needed) 
+Enter a valid url to crawl and wait for few seconds to process. Try:
+
+- https://huggingface.co/docs/transformers/en/index
+
+With this, the crawled document would be available in the main directory "./scraped_files" as text files. 
+
+6. **vector DB Storage**
+
+    Once the text files are saved locally, we store the embedded data of the same in a vectorDB persisted at:
 
 - ```bash
-  scrapy crawl document_spider
+  .\VectorDB\create_vector_store.py
     ```
 
-With this, the crawled document would be available in the main directory "./scraped_files" as text files.
-For the time being, we consider only one scraped file for next step.
-
-6. **Create a vector DB Storage**
-
-- ```bash
-  cd ..
-    ```
-- ```bash
-  uv run .\..\VectorDB\create_vector_store.py
-    ```
-
-With this step based on the length of the document, chromadb collections are created in ```./vectorstore``` path.
-
+With this step chromadb collections are created in ```./vectorstore``` path.
 
 7. **Power up the bot**
-- ```bash 
-  cd ..
-  ```
+
 - ```bash
-  streamlit run app.py
+  uv run streamlit run app.py
   ```
 
 
