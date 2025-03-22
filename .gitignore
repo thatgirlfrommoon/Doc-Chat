@@ -16,3 +16,4 @@ wheels/
 *.txt
 VectorDB/vectorstore/
 scraped_files/
+hello.py

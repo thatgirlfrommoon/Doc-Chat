@@ -19,70 +19,76 @@ Possible Use Cases:
 
 If it's accessible to crawl, it's yours! The Doc-chat is ready to absorb any knowledge you provide and will serve as your trusty study companion!
 
-# Brain of Doc-Chat
+# What is Doc-Chat?
 
 ![alt text](./images/workflow.png)
 
-# How to use Doc-Chat
-- Clone the repository :
-    - ```git clone https://github.com/thatgirlfrommoon/Doc-Chat.git```
-- Run app.py
-    - ```streamlit run app.py```
+
+##  Get started
+
+1. **Clone the repository**
+
+    - ``` bash
+        https://github.com/thatgirlfrommoon/Doc-Chat.git 
+        ```
+
+    Or start a codespace from the repository.
+    - ```bash
+      https://codespaces.new/thatgirlfrommoon/Doc-Chat
+      ```
+2. **Install uv**
+
+    MacOS/Linux:
+
+    - ```bash
+      curl -LsSf https://astral.sh/uv/install.sh | s
+      ```
+
+        
+    Windows:
+
+    - ```bash 
+      powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"```
+      
+Make sure to restart your terminal afterwards to ensure that the uv command gets picked up.
+    
+3. **Install Dependencies** 📦
+    ```bash
+    uv sync
+    ```
+
+4. **Set up OPENAI key**
+Add the key in ".env-sample" files in two paths paths 
+   - main folder
+   - ".\VectorDB\env-sample"
+
+    and rename both files to ".env".
+
+5. **Now start crawling.**
+
+Enter a valid url to crawl and wait for few seconds to process. Try:
+
+- https://huggingface.co/docs/transformers/en/index
+
+With this, the crawled document would be available in the main directory "./scraped_files" as text files. 
+
+6. **vector DB Storage**
+
+    Once the text files are saved locally, we store the embedded data of the same in a vectorDB persisted at:
+
+- ```bash
+  .\VectorDB\create_vector_store.py
+    ```
+
+With this step chromadb collections are created in ```./vectorstore``` path.
+
+7. **Power up the bot**
+
+- ```bash
+  uv run streamlit run app.py
+  ```
 
 
-# Development Setup
-
-For Windows: 
-Install uv for python package management from https://docs.astral.sh/uv/getting-started/installation/
-
-- ```curl -LsSf https://astral.sh/uv/install.sh | less```
-or 
-- ```pip install uv```
-
-
-# Python package
-The pyproject.toml contains metadata about the project. The following command will create a pyproject.toml file.
-- ```uv init```
-
-To create a virtual environment at .venv
-- ```uv venv```
-
-The virtual environment can be "activated" to make its packages available
-
-In Terminal
-- ```source .venv/bin/activate```
-
-In powershell
-- ```.venv\Scripts\activate```
-
-# Install packages
-uv.lock is a human-readable TOML file but is managed by uv and should not be edited manually.
-- ```uv run .\hello.py```
-
-
-# Set up OPENAI key
-Add the key in ".env-sample" file in the path "./bot" and rename the file name to ".env".
-
-# Run the Crawler
-- ```cd .\DocCrawl\```
-
-Now start crawling (You may edit the urls to crawl, if needed) 
-- ```scrapy crawl document_spider```
-
-With this, the crawled document would be available in the main directory "./scraped_files" as text files.
-For the time being, we consider only one scraped file for next step.
-
-# Create a vector DB Storage
-- ```cd ..```
-- ```uv run .\VectorDB\create_vector_store.py```
-
-With this step, based on the length of the document, chromadb collections are created in "./vectorstore" path.
-
-
-# Power up the bot
-- ```streamlit run app.py```
-
-
-A link will open up in the browser with url : http://localhost:8501/ 
+A link will open up in the browser with url : http://localhost:8501/ (or similar)
 
 There you go!
