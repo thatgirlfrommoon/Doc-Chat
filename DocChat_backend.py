@@ -3,6 +3,7 @@ import openai
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
 client = openai.OpenAI()
 
@@ -41,7 +42,7 @@ def generate_response_from_vectordb(user_query):
     return (collection_results["documents"][0]) if collection_results["documents"] else ""
 
 
-def chat_with_bot(user_input, args, conversation_history):
+def chat_with_bot(user_input, args, conversation_history, url=""):
     """Create prompts to converse with llm."""
 
     retrieved_docs = generate_response_from_vectordb(user_input)

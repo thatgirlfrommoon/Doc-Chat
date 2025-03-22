@@ -1,13 +1,35 @@
 import streamlit as st
 import DocChat_backend
+from crawling_pipeline import pipeline
+import time
 
 st.set_page_config(page_title="Doc-Chat", page_icon="🤖", layout="wide") 
 
 # create a Gradio interface
 def create_streamlit_interface():
 
-    st.title("RAG based Conversational AI bot")
-      
+    st.title("Welcome to Doc-Chat🤖 !")
+    st.snow()
+
+    user_url = st.text_input("Enter URL to Crawl")
+    
+
+    if user_url:
+        if st.button("Strart Crawling"):
+            with st.spinner("Wait for it...", show_time=True):
+                crawl_status = pipeline(url=user_url)
+                if crawl_status==2:
+                    st.success("Read the website!")
+                else:
+                    st.success("Already added!")
+    
+            
+    # if crawl_status:
+    #     print("Hi")
+    #     st.markdown("Sucess!")
+    # else:
+    #     st.markdown("Failed to add the url to database")
+
 
     # Display the chat message
     if 'messages' not in st.session_state:
@@ -37,7 +59,9 @@ def create_streamlit_interface():
             message_placeholder = st.empty()
             # full_response = ""
             full_response = DocChat_backend.chat_with_bot(user_input=prompt, 
-                                                          args={"temperature": temp, "max_tokens": max_tokens},conversation_history= st.session_state.messages)
+                                                          args={"temperature": temp, "max_tokens": max_tokens},
+                                                          conversation_history= st.session_state.messages,
+                                                          url = user_url)
             
             # # Add blinking cursor to simulate typing
             message_placeholder.markdown(full_response)
