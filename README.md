@@ -60,7 +60,7 @@ Make sure to restart your terminal afterwards to ensure that the uv command gets
 4. **Set up OPENAI key**
 Add the key in ".env-sample" files in two paths paths 
    - main folder
-   - ".\VectorDB\env-sample"
+   - ".\vector_db\env-sample"
 
     and rename both files to ".env".
 
@@ -74,13 +74,13 @@ With this, the crawled document would be available in the main directory "./scra
 
 6. **vector DB Storage**
 
-    Once the text files are saved locally, we store the embedded data of the same in a vectorDB persisted at:
+    Once the text files are saved locally, we store the embedded data of the same in a vector_db persisted at:
 
 - ```bash
-  .\VectorDB\create_vector_store.py
+  .\vector_db\create_vector_store.py
     ```
 
-With this step chromadb collections are created in ```./vectorstore``` path.
+With this step chromadb collections are created in ```.\vector_db\vectorstore``` path.
 
 7. **Power up the bot**
 

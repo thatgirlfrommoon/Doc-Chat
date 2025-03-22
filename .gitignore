@@ -14,6 +14,6 @@ wheels/
 
 # Files and folder contents
 *.txt
-VectorDB/vectorstore/
+vector_db/vectorstore/
 scraped_files/
 hello.py

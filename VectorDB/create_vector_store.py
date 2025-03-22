@@ -23,7 +23,7 @@ def get_embedding(text):
 
 def get_collection():
     """Initialise the chroma db client."""
-    store_path = './VectorDB/vectorstore'
+    store_path = './vector_db/vectorstore'
     if not os.path.exists(store_path):
         os.makedirs('')
     client = chromadb.PersistentClient(path=store_path)
