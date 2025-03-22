@@ -1,6 +1,6 @@
 import streamlit as st
 import DocChat_backend
-from crawling_pipeline import pipeline
+from crawling_pipeline import crawl_pipeline, db_pipeline
 
 st.set_page_config(page_title="Doc-Chat", page_icon="🤖", layout="wide") 
 
@@ -12,18 +12,22 @@ def create_streamlit_interface():
 
     user_url = st.text_input("Enter URL to Crawl")
     
-
+    # Crawl the url and create a vector db
     if user_url:
         if st.button("Strart Crawling"):
             with st.spinner("Wait for it...", show_time=True):
-                crawl_status = pipeline(url=user_url)
+                crawl_status = crawl_pipeline(url=user_url)
                 if isinstance(crawl_status, dict):
                     st.error(f'{crawl_status["error_message"]}')
                 elif crawl_status==2:
                     st.success("Read the website!")
+                    db_status = db_pipeline()
+                    if db_status["process"]:
+                        st.success("Added content to Database!")
+                    else:
+                        st.error(f'{db_status["error_message"]}')
                 else:
                     st.success("Already added!")
-
 
     # Display the chat message
     if 'messages' not in st.session_state:

@@ -36,7 +36,6 @@ class WebCrawler:
         full_path = f"{self.file_path}{domain[:15]}_{d.now().strftime('%Y%m%d_%H%M%S')}.txt"
         return full_path
 
-
     def save_to_file(self, text_content):
         """Save the extracted text to a file."""
         try:

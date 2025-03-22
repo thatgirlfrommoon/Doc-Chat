@@ -41,24 +41,20 @@ def store_embedding(embedding, chunk, chunk_id, collection):
     print(f"stored chunk : {chunk_id}" )
 
 # Create embeddings
-def create_and_store_embeddings():
+def create_and_store_embeddings(file_path):
     """ Create and store text embeddings."""
 
-    # load text file 
-    dir_path = "./scraped_files/"
-    txt_files = [f for f in os.listdir(dir_path) if f.endswith('.txt')]
-
     chunk_size = 5000
-    text_splitter = TokenTextSplitter(chunk_size=chunk_size,
-                                      chunk_overlap=100,)
-    collection = get_collection()
-
-    if not txt_files:
-        raise ValueError('No txt files found in the current directory')
-    
-    for file_name in txt_files:
-        print(f"Processing file: {file_name}")
-        file_path = dir_path+file_name
+    status= {
+        "process": False,
+        "error_message": ""
+    }
+    try:
+        text_splitter = TokenTextSplitter(chunk_size=chunk_size,
+                                        chunk_overlap=100,)
+        collection = get_collection()
+        
+        print(f"Processing file: {file_path}")
         with open(file_path, encoding="utf-8") as file:
             doc_text = file.read()
 
@@ -67,11 +63,12 @@ def create_and_store_embeddings():
         # create embeddings for each chunk
         for num,chunk in enumerate(chunks):
             embedding = get_embedding(chunk)
-            store_embedding(embedding,chunk, f"{num}_{hash(file_name)}",
+            store_embedding(embedding,chunk, f"{num}_{hash(file_path)}",
                             collection)
-
-if __name__ == "__main__":
-    create_and_store_embeddings()
-    print("Created vector embeddings and stored in a chromadb collection...")
+        print("Created vector embeddings and stored in a chromadb collection...")
+        status["process"]= True
+    except Exception as e:
+        status["error_message"]= e
+    return status
 
 
