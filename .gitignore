@@ -13,6 +13,7 @@ wheels/
 .env
 
 # Files and folder contents
+*.txt
 vector_db/vectorstore/
 scraped_files/
 hello.py
