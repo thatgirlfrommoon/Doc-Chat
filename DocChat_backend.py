@@ -25,11 +25,11 @@ def get_embedding(text):
 def get_collection():
     """Initialise the chroma db client."""
     # initialise chromadb
-    db_client = chromadb.PersistentClient(path='./VectorDB/vectorstore')
+    db_client = chromadb.PersistentClient(path='./vector_db/vectorstore')
     collection = db_client.get_or_create_collection("crawled_docs_1")
     return collection
 
-def generate_response_from_vectordb(user_query):
+def generate_response_from_vector_db(user_query):
     """Create embeddings for user query and find response from vector store."""
 
     collection = get_collection()
@@ -45,7 +45,7 @@ def generate_response_from_vectordb(user_query):
 def chat_with_bot(user_input, args, conversation_history, url=""):
     """Create prompts to converse with llm."""
 
-    retrieved_docs = generate_response_from_vectordb(user_input)
+    retrieved_docs = generate_response_from_vector_db(user_input)
     # print("retrieved_docs   : ", retrieved_docs)
     context = "---- context ----\n".join(retrieved_docs)
     

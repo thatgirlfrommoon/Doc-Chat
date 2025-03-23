@@ -60,27 +60,35 @@ Make sure to restart your terminal afterwards to ensure that the uv command gets
 4. **Set up OPENAI key**
 Add the key in ".env-sample" files in two paths paths 
    - main folder
-   - ".\VectorDB\env-sample"
+   - ".\vector_db\env-sample"
 
     and rename both files to ".env".
 
 5. **Now start crawling.**
 
-Enter a valid url to crawl and wait for few seconds to process. Try:
+    Enter a valid url to crawl and press enter to see a new button "Start crawling". Start crawling to add the URL content to knowledge base.
+
+      ![alt text](./images/doc_chat_crawlbutton.png)
+
+    Wait for few seconds to process. Try URL:
 
 - https://huggingface.co/docs/transformers/en/index
 
-With this, the crawled document would be available in the main directory "./scraped_files" as text files. 
 
-6. **vector DB Storage**
+6. **Vector DB storage**
 
-    Once the text files are saved locally, we store the embedded data of the same in a vectorDB persisted at:
+    Once the text files are saved locally, we store the embedded data of the same in a vector_db persisted at:
 
 - ```bash
-  .\VectorDB\create_vector_store.py
+  .\vector_db\vector_store\
     ```
+    
+    
+    ![alt text](./images/db_crawlbutton.png)
 
-With this step chromadb collections are created in ```./vectorstore``` path.
+ Once this step is completed, you will see a notification in the screen "Added website to Database!". 
+ 
+ A dropdown in the left panel will be updated with new URL you just added. Now you are ready to Chat with Doc-Chat with new information added.
 
 7. **Power up the bot**
 
